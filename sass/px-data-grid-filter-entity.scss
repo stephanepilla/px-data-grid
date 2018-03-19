@@ -6,32 +6,30 @@
   white-space: nowrap;
 }
 
+.labeled-wrapper{
+  display: flex;
+  align-items: baseline;
+}
+
 .labeled-text {
   display: inline-block;
-  width: 33%;
-  padding: 0 7px 3px 1px;
+  min-width: 33%;
+  flex-grow: 1;
   box-sizing: border-box;
-  vertical-align: bottom;
-  margin-top: 7px;
+  margin-bottom: $inuit-base-spacing-unit--large;
+  padding-right: $inuit-base-spacing-unit--small;
 }
 
 .labeled-text[extended] {
   width: 66%;
-  vertical-align: top;
+  margin-bottom: $inuit-base-spacing-unit--tiny;
 }
 
 .labeled-text.own-row{
   display: block;
 }
 
-.labeled-text[extended].own-row{
-  vertical-align: bottom;
-}
-
-.labeled-text > * {
-  width: 100%;
-}
-
 px-rangepicker {
-  --px-datetime-range-field-column-min-width: 0;
+  --px-datetime-range-field-display: flex;
+  --px-datetime-field-margin-bottom: $inuit-base-spacing-unit;
 }

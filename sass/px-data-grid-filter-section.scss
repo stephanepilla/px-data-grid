@@ -58,12 +58,12 @@ button.btn.btn--icon.btn--bare--primary {
   * a good way of doing it if we have multi-row filters (like date range).
   * Hence, for the non-compact mode filters, we cannot align to flex-start as the caption will
   * push the center of the dropdowns down... This is not pretty but...
-  * 1em for caption text height, 0.2667 for margin between caption and dropdown,
-  * 7px is for the margin on labeled-text and finally
-  * 5px from half the diff between dropdown height and actionable height (30px vs 20px)
+  * 15px for label
+  * 5px for label margin
+  * 30px for height of input fields/dropdown
   * in order to center the actionable.
   */
-  margin-top: calc(1em + 0.26667em + 7px + 5px);
+  margin-top: calc(50px / 2);
   margin-bottom: 0;
 }
 
