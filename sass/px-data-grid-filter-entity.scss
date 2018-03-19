@@ -32,4 +32,5 @@
 px-rangepicker {
   --px-datetime-range-field-display: flex;
   --px-datetime-field-margin-bottom: $inuit-base-spacing-unit;
+  --px-datetime-range-field-margin-between-fields-overwrite: $inuit-base-spacing-unit--small;
 }

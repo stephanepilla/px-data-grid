@@ -67,3 +67,8 @@ button.btn.btn--icon.btn--bare--primary {
   margin-bottom: 0;
 }
 
+:host([_compact-mode-enabled]) .actionable{
+  align-self: center;
+  margin-bottom: 0;
+}
+
