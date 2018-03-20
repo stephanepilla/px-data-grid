@@ -9,6 +9,7 @@
 .labeled-wrapper{
   display: flex;
   align-items: baseline;
+  -ms-flex-align: start; //for IE 11
 }
 
 .labeled-text {
