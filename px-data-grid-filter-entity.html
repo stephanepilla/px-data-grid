@@ -7,207 +7,141 @@
 <dom-module id="px-data-grid-filter-entity">
   <template>
     <style include="px-data-grid-filter-entity-styles"></style>
-    <div class="labeled-wrapper">
+      <div class="labeled-wrapper">
 
-      <div class="labeled-text">
-        <label for="column-dropdown" hidden="[[compactMode]]">
-          [[localize('Attribute')]]
-        </label>
-        <px-dropdown
-          id="column-dropdown"
-          allow-outside-scroll
-          items="[[_mappedColumns]]"
-          disable-clear
-          selected="{{entity.columnId}}"
-          hoist>
-        </px-dropdown>
-      </div>
-
-<<<<<<< HEAD
-      <template is="dom-if" if="{{_columnTypeIsString(entity.columnId)}}" restamp>
-=======
-      <div class="labeled-text">
-        <label for="value-input" hidden="[[compactMode]]">
-          [[localize('Value')]]
-        </label>
-        <input id="value-input" type="text" class="text-input" value="{{entity.query::input}}">
-      </div>
-    </template>
-
-    <template is="dom-if" if="{{_columnTypeIsDateAndRangesNotAvailable(entity.columnId, _dateRanges)}}" restamp>
-        <div class="labeled-text" extended>
-          <px-rangepicker
-            id="date-rangepicker"
-            hide-time="[[_hideTime]]"
-            hide-presets
-            date-format="[[_datePickerDateFormat]]"
-            time-format="[[_datePickerTimeFormat]]"
-            time-zone="[[_displayTimezone]]"
-            show-time-zone="abbreviatedText"
-            show-field-titles
-            from-moment="{{_dateFrom}}"
-            to-moment="{{_dateTo}}"
-            full-width
-            hoist>
-          </px-rangepicker>
-        </div>
-      </template>
-
-    <template is="dom-if" if="{{_columnTypeIsDateAndRangesAvailable(entity.columnId, _dateRanges)}}" restamp>
-      <div class="labeled-text">
-        <label for="date-range-dropdown" hidden="[[compactMode]]">
-          [[localize('Time range')]]
-        </label>
-        <px-dropdown
-          id="date-range-dropdown"
-          items="[[_dateRanges]]"
-          disable-clear
-          selected="{{entity.selectedDateRangeName}}"
-          hoist>
-        </px-dropdown>
-      </div>
-
-      <!-- Disabled in px-data-grid/pull/696 -->
-      <!-- <template is="dom-if" if="{{_showRangePicker(entity, entity.selectedDateRangeName, entity.columnId)}}">
-        <div class="labeled-text own-row" extended>
-          <px-rangepicker
-            id="date-rangepicker"
-            hide-time="[[_hideTime]]"
-            hide-presets
-            date-format="[[_displayDateFormat]]"
-            time-format="[[_displayTimeFormat]]"
-            time-zone="[[_displayTimezone]]"
-            show-time-zone="abbreviatedText"
-            show-field-titles
-            from-moment="{{_dateFrom}}"
-            to-moment="{{_dateTo}}">
-          </px-rangepicker>
-        </div>
-      </template> -->
-    </template>
-
-    <template is="dom-if" if="{{_columnTypeIsNumber(entity.columnId)}}" restamp>
-      <template is="dom-if" if="{{!_showSlider(_minNumberBound, _maxNumberBound, columns.*)}}" restamp>
->>>>>>> master
         <div class="labeled-text">
-          <label for="condition-dropdown" hidden="[[compactMode]]">
-            [[localize('Condition')]]
+          <label for="column-dropdown" hidden="[[compactMode]]">
+            [[localize('Attribute')]]
           </label>
           <px-dropdown
-            id="condition-dropdown"
+            id="column-dropdown"
             allow-outside-scroll
-            items="[[_resolveRegexPatterns(stringComparators, _regexPatterns)]]"
+            items="[[_mappedColumns]]"
             disable-clear
-            selected="{{entity.pattern}}"
+            selected="{{entity.columnId}}"
             hoist>
           </px-dropdown>
         </div>
 
-        <div class="labeled-text">
-          <label for="value-input" hidden="[[compactMode]]">
-            [[localize('Value')]]
-          </label>
-          <input id="value-input" type="text" class="text-input" value="{{entity.query::input}}">
-        </div>
-      </template>
-
-      <template is="dom-if" if="{{_columnTypeIsDateAndRangesNotAvailable(entity.columnId, _dateRanges)}}" restamp>
-          <div class="labeled-text" extended>
-            <px-rangepicker
-              id="date-rangepicker"
-              hide-time="[[_hideTime]]"
-              hide-presets
-              allow-wrap
-              date-format="YYYY/MM/DD"
-              time-format="HH:mm:ss"
-              time-zone="[[_displayTimezone]]"
-              show-time-zone="[[_showTimeZone]]"
-              show-field-titles
-              from-moment="{{_dateFrom}}"
-              to-moment="{{_dateTo}}"
-              full-width
-              hoist>
-            </px-rangepicker>
-          </div>
-        </template>
-
-      <template is="dom-if" if="{{_columnTypeIsDateAndRangesAvailable(entity.columnId, _dateRanges)}}" restamp>
-        <div class="labeled-text">
-          <label for="date-range-dropdown" hidden="[[compactMode]]">
-            [[localize('Time range')]]
-          </label>
-          <px-dropdown
-            id="date-range-dropdown"
-            items="[[_dateRanges]]"
-            disable-clear
-            selected="{{entity.selectedDateRangeName}}"
-            hoist>
-          </px-dropdown>
-        </div>
-
-        <!-- Disabled in px-data-grid/pull/696 -->
-        <!-- <template is="dom-if" if="{{_showRangePicker(entity, entity.selectedDateRangeName, entity.columnId)}}">
-          <div class="labeled-text own-row" extended>
-            <px-rangepicker
-              id="date-rangepicker"
-              hide-time="[[_hideTime]]"
-              hide-presets
-              date-format="[[_displayDateFormat]]"
-              time-format="[[_displayTimeFormat]]"
-              time-zone="[[_displayTimezone]]"
-              show-time-zone="abbreviatedText"
-              show-field-titles
-              from-moment="{{_dateFrom}}"
-              to-moment="{{_dateTo}}">
-            </px-rangepicker>
-          </div>
-        </template> -->
-      </template>
-
-      <template is="dom-if" if="{{_columnTypeIsNumber(entity.columnId)}}" restamp>
-        <template is="dom-if" if="{{!_showSlider(_minNumberBound, _maxNumberBound, columns.*)}}" restamp>
+        <template is="dom-if" if="{{_columnTypeIsString(entity.columnId)}}" restamp>
           <div class="labeled-text">
-            <label for="range-input" hidden="[[compactMode]]">
+            <label for="condition-dropdown" hidden="[[compactMode]]">
               [[localize('Condition')]]
             </label>
             <px-dropdown
-              id="number-condition-dropdown"
+              id="condition-dropdown"
               allow-outside-scroll
-              items="[[_resolveNumberConditions(numberComparators, _numberConditions)]]"
+              items="[[_resolveRegexPatterns(stringComparators, _regexPatterns)]]"
               disable-clear
-              selected="{{entity.condition}}"
+              selected="{{entity.pattern}}"
               hoist>
             </px-dropdown>
           </div>
 
           <div class="labeled-text">
-            <label for="number-value-input" hidden="[[compactMode]]">
+            <label for="value-input" hidden="[[compactMode]]">
               [[localize('Value')]]
             </label>
-            <input id="number-value-input" type="text" class="text-input" value="{{entity.value::input}}">
+            <input id="value-input" type="text" class="text-input" value="{{entity.query::input}}">
           </div>
         </template>
 
-        <template is="dom-if" if="{{_showSlider(_minNumberBound, _maxNumberBound, columns.*)}}" restamp>
-          <div class="labeled-text" extended>
-            <label for="range-input" hidden="[[compactMode]]">
-              [[localize('Range')]]
+        <template is="dom-if" if="{{_columnTypeIsDateAndRangesNotAvailable(entity.columnId, _dateRanges)}}" restamp>
+            <div class="labeled-text" extended>
+              <px-rangepicker
+                id="date-rangepicker"
+                hide-time="[[_hideTime]]"
+                hide-presets
+                date-format="[[_datePickerDateFormat]]"
+                time-format="[[_datePickerTimeFormat]]"
+                time-zone="[[_displayTimezone]]"
+                show-time-zone="abbreviatedText"
+                show-field-titles
+                from-moment="{{_dateFrom}}"
+                to-moment="{{_dateTo}}"
+                full-width
+                hoist>
+              </px-rangepicker>
+            </div>
+          </template>
+
+        <template is="dom-if" if="{{_columnTypeIsDateAndRangesAvailable(entity.columnId, _dateRanges)}}" restamp>
+          <div class="labeled-text">
+            <label for="date-range-dropdown" hidden="[[compactMode]]">
+              [[localize('Time range')]]
             </label>
-            <px-slider
-              id="range-input"
-              min="[[_minNumberBound]]"
-              max="[[_maxNumberBound]]"
-              value="{{entity.leftBound}}"
-              end-value="{{entity.rightBound}}"
-              step="1"
-              is-range>
-            </px-slider>
+            <px-dropdown
+              id="date-range-dropdown"
+              items="[[_dateRanges]]"
+              disable-clear
+              selected="{{entity.selectedDateRangeName}}"
+              hoist>
+            </px-dropdown>
           </div>
-        </template>
-      </template>
-    </div>
 
-  </template>
+          <!-- Disabled in px-data-grid/pull/696 -->
+          <!-- <template is="dom-if" if="{{_showRangePicker(entity, entity.selectedDateRangeName, entity.columnId)}}">
+            <div class="labeled-text own-row" extended>
+              <px-rangepicker
+                id="date-rangepicker"
+                hide-time="[[_hideTime]]"
+                hide-presets
+                date-format="[[_displayDateFormat]]"
+                time-format="[[_displayTimeFormat]]"
+                time-zone="[[_displayTimezone]]"
+                show-time-zone="abbreviatedText"
+                show-field-titles
+                from-moment="{{_dateFrom}}"
+                to-moment="{{_dateTo}}">
+              </px-rangepicker>
+            </div>
+          </template> -->
+        </template>
+
+        <template is="dom-if" if="{{_columnTypeIsNumber(entity.columnId)}}" restamp>
+          <template is="dom-if" if="{{!_showSlider(_minNumberBound, _maxNumberBound, columns.*)}}" restamp>
+            <div class="labeled-text">
+              <label for="range-input" hidden="[[compactMode]]">
+                [[localize('Condition')]]
+              </label>
+              <px-dropdown
+                id="number-condition-dropdown"
+                allow-outside-scroll
+                items="[[_resolveNumberConditions(numberComparators, _numberConditions)]]"
+                disable-clear
+                selected="{{entity.condition}}"
+                hoist>
+              </px-dropdown>
+            </div>
+
+            <div class="labeled-text">
+              <label for="number-value-input" hidden="[[compactMode]]">
+                [[localize('Value')]]
+              </label>
+              <input id="number-value-input" type="text" class="text-input" value="{{entity.value::input}}">
+            </div>
+          </template>
+
+          <template is="dom-if" if="{{_showSlider(_minNumberBound, _maxNumberBound, columns.*)}}" restamp>
+            <div class="labeled-text" extended>
+              <label for="range-input" hidden="[[compactMode]]">
+                [[localize('Range')]]
+              </label>
+              <px-slider
+                id="range-input"
+                min="[[_minNumberBound]]"
+                max="[[_maxNumberBound]]"
+                value="{{entity.leftBound}}"
+                end-value="{{entity.rightBound}}"
+                step="1"
+                is-range>
+              </px-slider>
+            </div>
+          </template>
+        </template>
+
+      </div>
+    </template>
   <script>
     {
       /**
