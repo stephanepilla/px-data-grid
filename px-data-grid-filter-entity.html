@@ -23,7 +23,72 @@
         </px-dropdown>
       </div>
 
+<<<<<<< HEAD
       <template is="dom-if" if="{{_columnTypeIsString(entity.columnId)}}" restamp>
+=======
+      <div class="labeled-text">
+        <label for="value-input" hidden="[[compactMode]]">
+          [[localize('Value')]]
+        </label>
+        <input id="value-input" type="text" class="text-input" value="{{entity.query::input}}">
+      </div>
+    </template>
+
+    <template is="dom-if" if="{{_columnTypeIsDateAndRangesNotAvailable(entity.columnId, _dateRanges)}}" restamp>
+        <div class="labeled-text" extended>
+          <px-rangepicker
+            id="date-rangepicker"
+            hide-time="[[_hideTime]]"
+            hide-presets
+            date-format="[[_datePickerDateFormat]]"
+            time-format="[[_datePickerTimeFormat]]"
+            time-zone="[[_displayTimezone]]"
+            show-time-zone="abbreviatedText"
+            show-field-titles
+            from-moment="{{_dateFrom}}"
+            to-moment="{{_dateTo}}"
+            full-width
+            hoist>
+          </px-rangepicker>
+        </div>
+      </template>
+
+    <template is="dom-if" if="{{_columnTypeIsDateAndRangesAvailable(entity.columnId, _dateRanges)}}" restamp>
+      <div class="labeled-text">
+        <label for="date-range-dropdown" hidden="[[compactMode]]">
+          [[localize('Time range')]]
+        </label>
+        <px-dropdown
+          id="date-range-dropdown"
+          items="[[_dateRanges]]"
+          disable-clear
+          selected="{{entity.selectedDateRangeName}}"
+          hoist>
+        </px-dropdown>
+      </div>
+
+      <!-- Disabled in px-data-grid/pull/696 -->
+      <!-- <template is="dom-if" if="{{_showRangePicker(entity, entity.selectedDateRangeName, entity.columnId)}}">
+        <div class="labeled-text own-row" extended>
+          <px-rangepicker
+            id="date-rangepicker"
+            hide-time="[[_hideTime]]"
+            hide-presets
+            date-format="[[_displayDateFormat]]"
+            time-format="[[_displayTimeFormat]]"
+            time-zone="[[_displayTimezone]]"
+            show-time-zone="abbreviatedText"
+            show-field-titles
+            from-moment="{{_dateFrom}}"
+            to-moment="{{_dateTo}}">
+          </px-rangepicker>
+        </div>
+      </template> -->
+    </template>
+
+    <template is="dom-if" if="{{_columnTypeIsNumber(entity.columnId)}}" restamp>
+      <template is="dom-if" if="{{!_showSlider(_minNumberBound, _maxNumberBound, columns.*)}}" restamp>
+>>>>>>> master
         <div class="labeled-text">
           <label for="condition-dropdown" hidden="[[compactMode]]">
             [[localize('Condition')]]
@@ -177,15 +242,6 @@
               type: Array
             },
 
-            useTimezones: {
-              type: Boolean
-            },
-
-            _showTimeZone: {
-              type: String,
-              value: 'none'
-            },
-
             _mappedColumns: Array,
 
             _regexPatterns: {
@@ -282,6 +338,14 @@
               type: String
             },
 
+            _datePickerDateFormat: {
+              type: String
+            },
+
+            _datePickerTimeFormat: {
+              type: String
+            },
+
             localize: Function
           };
         }
@@ -293,7 +357,6 @@
             '_momentDatesObserver(_dateFrom, _dateTo, _dateFrom.*, _dateTo.*)',
             // '_entityDatesObserver(entity, entity.dateFrom, entity.dateTo)',
             '_localizeChanged(localize)',
-            '_useTimezonesChanged(useTimezones)',
             '_entityObserver(entity, entity.*)',
             '_columnNumberBoundsObserver(entity, entity.columnId, columns.*)',
             '_setDateRanges(entity, columns, entity.columnId, columns.*)',
@@ -315,10 +378,13 @@
           });
         }
 
+<<<<<<< HEAD
         _useTimezonesChanged(useTimezones) {
           this._showTimeZone = useTimezones ? 'extendedDropdown' : 'none';
         }
 
+=======
+>>>>>>> master
         _setDateRanges(entity, columns) {
           const selectedColumn = this._getColumnById(entity.columnId);
           if (!selectedColumn || selectedColumn.type !== 'date') {
@@ -363,6 +429,8 @@
             this.set('_displayDateFormat', selectedColumn.rendererConfig.datePickerDateFormat || 'YYYY/MM/DD');
             this.set('_displayTimeFormat', selectedColumn.rendererConfig.datePickerTimeFormat || 'HH:mm');
             this.set('_displayTimezone', selectedColumn.rendererConfig.timezone || 'UTC');
+            this.set('_datePickerDateFormat', selectedColumn.rendererConfig.datePickerDateFormat || 'YYYY/MM/DD');
+            this.set('_datePickerTimeFormat', selectedColumn.rendererConfig.datePickerTimeFormat || 'HH:mm');
           }
         }
 
