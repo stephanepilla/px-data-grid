@@ -1242,6 +1242,54 @@ limitations under the License.
         resolveColumnHeader(column) {
           return this._pxDataGrid.resolveColumnHeader(column);
         }
+
+        /**
+         * Gets the current configurations set by the user on the data grid
+         */
+        getState() {
+          return this._pxDataGrid.getState();
+        }
+
+        /**
+         * Sets the state of the grid based on a past state created by
+         * calling `getState()`.
+         */
+        setState(state) {
+          return this._pxDataGrid.setState(state);
+        }
+
+        /**
+         * Restore layout (columns) to state those were given
+         */
+        restoreLayout() {
+          return this._pxDataGrid.restoreLayout();
+        }
+
+        /**
+         * Set visibility of the details container for any item's corresponding row.
+         */
+        setRowDetailsVisible(item, isVisible) {
+          return this._pxDataGrid.setRowDetailsVisible(item, isVisible);
+        }
+
+        /**
+         * Forces the grid to read each of the `columns` objects and update
+         * each column based on any changed configurations.
+         *
+         * Use this if you mutate your `columns` property in your app and
+         * want the data grid to update to reflect the new configurations.
+         */
+        updateColumns() {
+          return this._pxDataGrid.updateColumns();
+        }
+
+        /**
+         * This method allows to pass filters and save them as default filter state.
+         * This means that after clicking "Reset" in filters modal filters will return to this state.
+         */
+        applyFilters(filters) {
+          return this._pxDataGrid.applyFilters(filters);
+        }
       }
       customElements.define(DataGridPaginatedElement.is, DataGridPaginatedElement);
 

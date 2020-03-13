@@ -8,11 +8,11 @@
       "sourceRange": {
         "file": "px-data-grid-paginated.html",
         "start": {
-          "line": 1250,
+          "line": 1298,
           "column": 6
         },
         "end": {
-          "line": 1250,
+          "line": 1298,
           "column": 42
         }
       },
@@ -65716,6 +65716,123 @@
               "name": "column"
             }
           ]
+        },
+        {
+          "name": "getState",
+          "description": "Gets the current configurations set by the user on the data grid",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 1248,
+              "column": 8
+            },
+            "end": {
+              "line": 1250,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "setState",
+          "description": "Sets the state of the grid based on a past state created by\ncalling `getState()`.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 1256,
+              "column": 8
+            },
+            "end": {
+              "line": 1258,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "state"
+            }
+          ]
+        },
+        {
+          "name": "restoreLayout",
+          "description": "Restore layout (columns) to state those were given",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 1263,
+              "column": 8
+            },
+            "end": {
+              "line": 1265,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "setRowDetailsVisible",
+          "description": "Set visibility of the details container for any item's corresponding row.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 1270,
+              "column": 8
+            },
+            "end": {
+              "line": 1272,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            },
+            {
+              "name": "isVisible"
+            }
+          ]
+        },
+        {
+          "name": "updateColumns",
+          "description": "Forces the grid to read each of the `columns` objects and update\neach column based on any changed configurations.\n\nUse this if you mutate your `columns` property in your app and\nwant the data grid to update to reflect the new configurations.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 1281,
+              "column": 8
+            },
+            "end": {
+              "line": 1283,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "applyFilters",
+          "description": "This method allows to pass filters and save them as default filter state.\nThis means that after clicking \"Reset\" in filters modal filters will return to this state.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 1289,
+              "column": 8
+            },
+            "end": {
+              "line": 1291,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "filters"
+            }
+          ]
         }
       ],
       "staticMethods": [],
@@ -65727,7 +65844,7 @@
           "column": 6
         },
         "end": {
-          "line": 1244,
+          "line": 1292,
           "column": 7
         }
       },
